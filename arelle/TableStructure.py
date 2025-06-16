@@ -332,11 +332,9 @@ def evaluateTableIndex(modelXbrl, lang=None):
                         # the flow-up part, drop
                         cntxStartDatetime = cntx.startDatetime
                         cntxEndDatetime = cntx.endDatetime
-                        if (tableGroup != STMTS or
-                            (cntxStartDatetime, cntxEndDatetime) in stmtReportingPeriods and
-                             (fact not in reportedFacts or
+                        if (fact not in reportedFacts or
                               all(dimQn not in cntx.qnameDims # unspecified dims are all defaulted if reported elsewhere
-                                  for dimQn in (cntx.qnameDims.keys() - roleURIdims.keys())))):
+                                  for dimQn in (cntx.qnameDims.keys() - roleURIdims.keys()))):
                             tableFacts.add(fact)
                             reportedFacts.add(fact)
             roleType._tableFacts = tableFacts
